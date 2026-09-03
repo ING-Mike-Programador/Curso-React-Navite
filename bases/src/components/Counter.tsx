@@ -1,18 +1,7 @@
-import { useState } from "react";
-
+import { useCount } from "../hooks/UseCount";
 export const Counter = () => {
-  const [count, setcount] = useState(0);
-  const increment = (value: number) => {
-    //setcount(count + value);
-    setcount((current) => current + value);
-  };
-  const decrement = (value: number) => {
-    //setcount(count - value);
-    setcount(Math.max(0, count - value));
-  };
-  const reset = () => {
-    setcount(0);
-  }
+  const { count, increment, decrement, reset } = useCount();
+
 
   return (
     <>
@@ -37,7 +26,7 @@ export const Counter = () => {
           onClick={() => reset()}
         >
           Reset
-        </button>
+        </button> 
       </div>
     </>
   );
