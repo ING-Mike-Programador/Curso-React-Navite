@@ -1,6 +1,8 @@
 import axios from "axios";
 import { API_KEY, URLusers } from "../pruebaAPI";
-import type { UserListResponse } from "../interfaces/Interface-apiRestTest";
+import type { UserListResponse } from "../interfaces/Interface-apiRestTest.response";
+import { User } from '../interfaces/Interface-apiRestTest.response';
+
 
 export const loadUsersAction = async (page: number) => {
   try {
@@ -13,7 +15,7 @@ export const loadUsersAction = async (page: number) => {
         "x-api-key": `${API_KEY}`, // API KEY necesaria
       }
     });
-    return data.data;
+    return data;
   } catch (error) {
     // Manejo de errores
     console.log(error); // Imprime el error en la consola para depuración
