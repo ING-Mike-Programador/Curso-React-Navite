@@ -15,10 +15,12 @@ export default function FAB({ label, onPress, onLongPress, position = "rigth" }:
     // Boton
     <Pressable
       // Estilo del boton
-      style={[
+      style={({pressed}) => [
         styles.btnStyle,
         // Condicion para intercambio de boton
         position === "rigth" ? styles.btnPositionSum : styles.btnPositionRest,
+        // Estilo al ser presionado
+        pressed === true ? styles.btnPress : styles.btnNotPress
       ]}
       onPress={onPress}
       onLongPress={onLongPress}
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
   btnStyle: {
     width: 75,
     height: 75,
-    borderRadius: 25,
+    borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
     elevation: 3,
@@ -64,4 +66,9 @@ const styles = StyleSheet.create({
     left: 20,
     backgroundColor: "#93C5FD",
   },
+  btnPress:{
+    opacity:0.4,
+  },btnNotPress:{
+    opacity:1
+  }
 });
