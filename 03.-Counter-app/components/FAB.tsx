@@ -4,13 +4,13 @@ import { Text, Pressable, StyleSheet } from "react-native";
 interface props {
   // propiedades
   label: string; // Texto del boton
-
+  position?: "left" | "rigth"; // posicion del boton
   // metodos
   onPress?: () => void;
   onLongPress?: () => void;
 }
 
-export default function FAB({ label, onPress, onLongPress }: props) {
+export default function FAB({ label, onPress, onLongPress, position = "rigth" }: props) {
   return (
     // Boton
     <Pressable
@@ -18,7 +18,7 @@ export default function FAB({ label, onPress, onLongPress }: props) {
       style={[
         styles.btnStyle,
         // Condicion para intercambio de boton
-        label === "+1" ? styles.btnPositionSum : styles.btnPositionRest,
+        position === "rigth" ? styles.btnPositionSum : styles.btnPositionRest,
       ]}
       onPress={onPress}
       onLongPress={onLongPress}

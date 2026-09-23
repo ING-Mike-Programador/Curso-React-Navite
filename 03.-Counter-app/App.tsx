@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import FAB from "./components/FAB";
 
 
@@ -21,6 +21,7 @@ export default function App() {
       {/* Boton para aumentar contador */}
       <FAB
         label="+1"
+        position="rigth"
         onPress={() => setCount(count + 1)}
         onLongPress={() => setCount(count + 10)}
       />
@@ -28,6 +29,7 @@ export default function App() {
       {/* Boton para aumentar contador */}
       <FAB
         label="-1"
+        position="left"
         onPress={() => setCount(count - 1)}
         onLongPress={() => setCount(0)}
       />
