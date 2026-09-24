@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 const CalculatorAPP = () => {
   return (
     <View>
-      <Text style={{ fontSize: 50, fontFamily: Fonts.mono }}>
+      <Text style={{ fontSize: 30, fontFamily: Fonts.mono }}>
         CalculatorAPP
       </Text>
     </View>

@@ -4,7 +4,35 @@ import "@/global.css";
 import { Platform } from "react-native";
 
 // Colores
-export const Colors = {} as const;
+export const Colors = {
+  background: "#F8FAFC",
+  surface: "#FFFFFF",
+  blue: {
+    100: "#DBEAFE",
+    200: "#BFDBFE",
+    300: "#93C5FD",
+    400: "#60A5FA",
+    500: "#3B82F6",
+    600: "#2563EB",
+    700: "#1D4ED8",
+    800: "#1E40AF",
+    900: "#1E3A8A",
+  },
+  text: {
+    primary: "#0F172A",
+    secondary: "#64748B",
+    inverse: "#FFFFFF",
+  },
+  // Bordes y detalles
+  border: "#CBD5E1",
+  divider: "#E2E8F0",
+  // Estados
+  success: "#22C55E",
+  warning: "#F59E0B",
+  danger: "#EF4444",
+  // Sombras (opcional)
+  shadow: "#000000",
+} as const;
 
 // Fuentes
 export const Fonts = Platform.select({
