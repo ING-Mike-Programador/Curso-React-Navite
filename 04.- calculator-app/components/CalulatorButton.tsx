@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/theme";
+import * as Haptics from "expo-haptics";
 import { Pressable, Text } from "react-native";
 import { globalStyles } from "../styles/global-styles";
 
@@ -31,7 +32,10 @@ const CalulatorButton = ({
           ? globalStyles.button.width * 2 + globalStyles.row.paddingHorizontal
           : globalStyles.button.width,
       })}
-      onPress={onPress}
+      onPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
+        onPress;
+      }}
     >
       <Text
         style={{
