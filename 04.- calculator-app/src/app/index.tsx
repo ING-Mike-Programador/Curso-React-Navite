@@ -6,7 +6,7 @@ import { useCalculator } from "../../hooks/useCalculator";
 import { globalStyles } from "../../styles/global-styles";
 
 const CalculatorAPP = () => {
-  const { formula, buildNumber } = useCalculator();
+  const { formula, buildNumber, clean, toggleSig, deletLast } = useCalculator();
 
   return (
     <View style={globalStyles.calculatorContainer}>
@@ -17,7 +17,7 @@ const CalculatorAPP = () => {
       <View style={[globalStyles.row]}>
         <CalulatorButton
           onPress={() => {
-            console.log("C");
+            clean();
           }}
           label="C"
           blackText
@@ -25,7 +25,7 @@ const CalculatorAPP = () => {
         />
         <CalulatorButton
           onPress={() => {
-            console.log("+/-");
+            toggleSig();
           }}
           label="+/-"
           blackText
@@ -33,7 +33,10 @@ const CalculatorAPP = () => {
         />
         <CalulatorButton
           onPress={() => {
-            console.log("del");
+            deletLast();
+          }}
+          onLongPress={() => {
+            clean();
           }}
           label="del"
           blackText
@@ -142,7 +145,7 @@ const CalculatorAPP = () => {
         />
         <CalulatorButton
           onPress={() => {
-            console.log(".");
+            buildNumber(".");
           }}
           label="."
         />

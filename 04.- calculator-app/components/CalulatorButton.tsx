@@ -13,6 +13,7 @@ interface Props {
 
   // metodos
   onPress: () => void;
+  onLongPress?: () => void;
 }
 
 const CalulatorButton = ({
@@ -21,6 +22,7 @@ const CalulatorButton = ({
   blackText = true,
   doubleSize = false,
   onPress,
+  onLongPress,
 }: Props) => {
   return (
     <Pressable
@@ -36,6 +38,7 @@ const CalulatorButton = ({
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
         onPress();
       }}
+      onLongPress={onLongPress}
     >
       <Text
         style={{
