@@ -134,6 +134,7 @@ const CalculatorAPP = () => {
           onPress={() => {
             console.log("0");
           }}
+          doubleSize={true}
           label="0"
         />
         <CalulatorButton

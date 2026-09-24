@@ -8,6 +8,7 @@ interface Props {
   label: string;
   colorButton?: string;
   blackText?: boolean;
+  doubleSize?: boolean;
 
   // metodos
   onPress?: () => void;
@@ -17,6 +18,7 @@ const CalulatorButton = ({
   label,
   colorButton = Colors.blue[400],
   blackText = true,
+  doubleSize = false,
   onPress,
 }: Props) => {
   return (
@@ -25,6 +27,9 @@ const CalulatorButton = ({
         ...globalStyles.button,
         backgroundColor: colorButton,
         opacity: pressed ? 0.6 : 1,
+        width: doubleSize
+          ? globalStyles.button.width * 2 + globalStyles.row.paddingHorizontal
+          : globalStyles.button.width,
       })}
       onPress={onPress}
     >
