@@ -12,7 +12,7 @@ interface Props {
   doubleSize?: boolean;
 
   // metodos
-  onPress?: () => void;
+  onPress: () => void;
 }
 
 const CalulatorButton = ({
@@ -34,7 +34,7 @@ const CalulatorButton = ({
       })}
       onPress={() => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
-        onPress;
+        onPress();
       }}
     >
       <Text
