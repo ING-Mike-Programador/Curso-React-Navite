@@ -1,14 +1,16 @@
+import { Colors } from "@/constants/theme";
 import { Slot } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 
 const RootLayout = () => {
   return (
-    <View>
+    <View style={{ backgroundColor: Colors.background, flex: 1 }}>
       <Text>HEADER</Text>
 
       <Slot />
 
-      <Text> FOOTER</Text>
+      <StatusBar style="light" />
     </View>
   );
 };

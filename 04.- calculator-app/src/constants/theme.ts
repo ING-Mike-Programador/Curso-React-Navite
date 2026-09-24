@@ -5,7 +5,7 @@ import { Platform } from "react-native";
 
 // Colores
 export const Colors = {
-  background: "#F8FAFC",
+  background: "#020202",
   surface: "#FFFFFF",
   blue: {
     100: "#DBEAFE",
