@@ -16,10 +16,19 @@ export const useCalculator = () => {
   const lastOperation = useRef<Operator | undefined>(undefined);
 
   useEffect(() => {
-    //Todo Calcular resultado
-
-    setFormula(number);
+    if (lastOperation.current != undefined) {
+      const firstFormulaPart = formula.split(" ").at(0);
+      setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`);
+    } else {
+      setFormula(number);
+    }
   }, [number]);
+
+  useEffect(() => {
+    //Todo Calcular resultado
+    const subResult = constResult();
+    setPrevNumber(`${subResult}`);
+  }, [formula]);
 
   const clean = () => {
     setNumber("0");
@@ -40,6 +49,62 @@ export const useCalculator = () => {
     if (number.includes("-") && number.length === 2) return setNumber("0");
     if (number.length === 1) return setNumber("0");
     setNumber(number.substring(0, number.length - 1));
+  };
+
+  const setLastNumber = () => {
+    //TODO Calcular resultados
+    calculateResult();
+    if (number.endsWith(".")) {
+      setPrevNumber(number.slice(0, -1));
+    }
+    setPrevNumber(number);
+    setNumber("0");
+  };
+
+  const divideOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.divide;
+  };
+  const sumOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.add;
+  };
+  const restOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.substract;
+  };
+  const multOperation = () => {
+    setLastNumber();
+    lastOperation.current = Operator.multiply;
+  };
+
+  const constResult = () => {
+    const [firstNum, sigOperator, secondNum] = formula.split(" ");
+
+    const num1 = Number(firstNum);
+    const num2 = Number(secondNum);
+
+    if (isNaN(num2)) return num1;
+
+    switch (sigOperator) {
+      case Operator.add:
+        return num1 + num2;
+      case Operator.substract:
+        return num1 - num2;
+      case Operator.divide:
+        return num1 / num2;
+      case Operator.multiply:
+        return num1 * num2;
+      default:
+        throw new Error(`Operacion ${sigOperator} invalida`);
+    }
+  };
+
+  const calculateResult = () => {
+    const result = constResult();
+    setFormula(`${result}`);
+    lastOperation.current = undefined;
+    setPrevNumber("0");
   };
 
   const buildNumber = (numberString: string) => {
@@ -78,5 +143,11 @@ export const useCalculator = () => {
     clean,
     toggleSig,
     deletLast,
+    divideOperation,
+    sumOperation,
+    restOperation,
+    multOperation,
+    constResult,
+    calculateResult,
   };
 };

@@ -6,13 +6,31 @@ import { useCalculator } from "../../hooks/useCalculator";
 import { globalStyles } from "../../styles/global-styles";
 
 const CalculatorAPP = () => {
-  const { formula, buildNumber, clean, toggleSig, deletLast } = useCalculator();
+  const {
+    formula,
+    prevNumber,
+    buildNumber,
+    clean,
+    toggleSig,
+    deletLast,
+    divideOperation,
+    sumOperation,
+    restOperation,
+    multOperation,
+    constResult,
+    calculateResult,
+  } = useCalculator();
 
   return (
     <View style={globalStyles.calculatorContainer}>
       <View style={globalStyles.calculatorContainerTexts}>
         <ThemeText variant="h1">{formula}</ThemeText>
-        <ThemeText variant="h2">2500</ThemeText>
+
+        {formula === prevNumber ? (
+          <ThemeText variant="h2"> </ThemeText>
+        ) : (
+          <ThemeText variant="h2">{prevNumber}</ThemeText>
+        )}
       </View>
       <View style={[globalStyles.row]}>
         <CalulatorButton
@@ -43,9 +61,7 @@ const CalculatorAPP = () => {
           colorButton={Colors.blue[500]}
         />
         <CalulatorButton
-          onPress={() => {
-            console.log("÷");
-          }}
+          onPress={divideOperation}
           label="÷"
           colorButton={Colors.blue[700]}
           blackText={false}
@@ -71,9 +87,7 @@ const CalculatorAPP = () => {
           label="9"
         />
         <CalulatorButton
-          onPress={() => {
-            console.log("X");
-          }}
+          onPress={multOperation}
           label="X"
           colorButton={Colors.blue[700]}
           blackText={false}
@@ -99,9 +113,7 @@ const CalculatorAPP = () => {
           label="6"
         />
         <CalulatorButton
-          onPress={() => {
-            console.log("-");
-          }}
+          onPress={restOperation}
           label="-"
           colorButton={Colors.blue[700]}
           blackText={false}
@@ -128,7 +140,7 @@ const CalculatorAPP = () => {
         />
         <CalulatorButton
           onPress={() => {
-            console.log("+");
+            sumOperation();
           }}
           label="+"
           colorButton={Colors.blue[700]}
@@ -150,9 +162,7 @@ const CalculatorAPP = () => {
           label="."
         />
         <CalulatorButton
-          onPress={() => {
-            console.log("=");
-          }}
+          onPress={calculateResult}
           label="="
           colorButton={Colors.blue[700]}
           blackText={false}
