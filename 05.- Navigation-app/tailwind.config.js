@@ -4,7 +4,14 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      // agregar fuentes nuevas
+      fontFamily: {
+        "work-black": ["WorkSans-Black", "Sans-serif"],
+        "work-Light": ["WorkSans-Light", "Sans-serif"],
+        "work-Medium": ["WorkSans-Medium", "Sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
