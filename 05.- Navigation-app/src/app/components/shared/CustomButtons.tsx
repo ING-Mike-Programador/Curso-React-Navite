@@ -1,19 +1,55 @@
-import { Pressable, PressableProps, Text } from "react-native";
+import React from "react";
+import { Pressable, PressableProps, Text, View } from "react-native";
 interface Props extends PressableProps {
   children: string;
   color: "primary" | "secondary" | "tertiary";
+  variant?: "contained" | "text-only";
 }
-const CustomButtons = ({ children, color }: Props) => {
-  const btnColor = {
-    primary: "bg-primary",
-    secondary: "bg-secondary",
-    tertiary: "bg-tertiary",
-  }[color];
-  return (
-    <Pressable className={`p-3 rounded-md ${btnColor}`}>
-      <Text className="text-white text-center">{children}</Text>
-    </Pressable>
-  );
-};
+const CustomButtons = React.forwardRef(
+  (
+    { children, color, onPress, onLongPress, variant = "contained" }: Props,
+    ref: React.Ref<View>,
+  ) => {
+    const btnColor = {
+      primary: "bg-primary",
+      secondary: "bg-secondary",
+      tertiary: "bg-tertiary",
+    }[color];
+
+    const textColor = {
+      primary: "text-primary",
+      secondary: "text-secondary",
+      tertiary: "text-tertiary",
+    }[color];
+
+    if (variant === "text-only") {
+      return (
+        <Pressable
+          className={`p-3`}
+          onPress={onPress}
+          onLongPress={onLongPress}
+          ref={ref}
+        >
+          <Text className={`text-center ${textColor} font-work-Medium`}>
+            {children}
+          </Text>
+        </Pressable>
+      );
+    }
+
+    return (
+      <Pressable
+        className={`p-3 rounded-md ${btnColor}  active:opacity-60`}
+        onPress={onPress}
+        onLongPress={onLongPress}
+        ref={ref}
+      >
+        <Text className="text-white text-center font-work-Medium">
+          {children}
+        </Text>
+      </Pressable>
+    );
+  },
+);
 
 export default CustomButtons;
