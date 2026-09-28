@@ -7,33 +7,48 @@ module.exports = {
     extend: {
       // Agregar colores
       colors: {
-        background: "#020202",
+        // Fondos
+        background: "#F8FAFC",
         surface: "#FFFFFF",
-        text: {
-          primary: "#0F172A",
-          secondary: "#64748B",
-          inverse: "#FFFFFF",
-        },
-        blue: {
-          DEFAULT: "#3B82F6",
-          100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#3B82F6",
-          600: "#2563EB",
-          700: "#1D4ED8",
-          800: "#1E40AF",
-          900: "#1E3A8A",
-        },
-        // Bordes y detalles
+
+        // Colores principales
+        primary: "#2563EB",
+        primaryLight: "#60A5FA",
+        primaryDark: "#1D4ED8",
+
+        secondary: "#06B6D4",
+        secondaryLight: "#67E8F9",
+        secondaryDark: "#0891B2",
+
+        tertiary: "#6366F1",
+        tertiaryLight: "#A5B4FC",
+        tertiaryDark: "#4338CA",
+
+        // Texto
+        primaryText: "#0F172A",
+        secondaryText: "#64748B",
+        inverseText: "#FFFFFF",
+
+        // Bordes
         border: "#CBD5E1",
-        divider: "#E2E8F0",
+        borderLight: "#E2E8F0",
+        borderDark: "#94A3B8",
+
         // Estados
         success: "#22C55E",
+        successLight: "#86EFAC",
+        successDark: "#15803D",
+
         warning: "#F59E0B",
+        warningLight: "#FCD34D",
+        warningDark: "#B45309",
+
         danger: "#EF4444",
-        // Sombras (opcional)
+        dangerLight: "#FCA5A5",
+        dangerDark: "#B91C1C",
+
+        // Extras
+        muted: "#94A3B8",
         shadow: "#000000",
       },
 
