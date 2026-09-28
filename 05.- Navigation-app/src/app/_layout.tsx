@@ -1,8 +1,14 @@
 import { useFonts } from "expo-font";
+import { NavigationBar } from "expo-navigation-bar";
 import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
+import { Platform } from "react-native";
 import "./global.css";
+// Verificar si el dispositivo es android
+const isAndroid = Platform.OS === "android";
 
+// Ocultar barra de opciones en el movil android
+if (isAndroid) NavigationBar.setHidden(true);
 // esperar a que las fuentes esten cargadas
 SplashScreen.preventAutoHideAsync();
 
