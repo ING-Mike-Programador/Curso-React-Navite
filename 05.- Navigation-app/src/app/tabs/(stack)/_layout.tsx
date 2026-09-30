@@ -5,7 +5,7 @@ const StackLayout = () => {
     <Stack
       screenOptions={{
         animation: "slide_from_right",
-        //headerShown: false
+        //headerShown: false,
         headerShadowVisible: false,
         contentStyle: { backgroundColor: "#F8FAFC" },
       }}
